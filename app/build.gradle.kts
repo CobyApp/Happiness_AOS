@@ -40,7 +40,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.4"
     }
     packaging {
         resources {
@@ -67,5 +67,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation("com.github.cobylibrary:cobylibrary:1.0.5")
+    implementation("com.github.cobylibrary:cobylibrary:1.0.6")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 }
