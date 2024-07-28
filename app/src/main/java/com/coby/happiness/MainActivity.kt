@@ -42,7 +42,9 @@ import com.coby.happiness.ui.bunch.BunchScreen
 import com.coby.happiness.ui.home.HomeScreen
 import com.coby.happiness.ui.map.MapScreen
 import com.coby.happiness.ui.profile.ProfileScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
