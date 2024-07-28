@@ -1,8 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
-    id("com.google.devtools.ksp")
+    id("com.google.devtools.ksp") version "2.0.0-1.0.23"
     id("com.google.dagger.hilt.android")
 }
 
@@ -76,17 +75,14 @@ dependencies {
 
     // Hilt 의존성
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
 
     // viewModelScope
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     // Room
     implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.common)
+    annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
-}
-
-kapt {
-    correctErrorTypes = true
+    ksp(libs.androidx.room.compiler)
 }
