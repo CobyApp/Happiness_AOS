@@ -10,7 +10,6 @@ data class BunchModel(
     val endDate: LocalDateTime = LocalDateTime.now(),
     val title: String = "",
     val image: Bitmap? = null,
-    val imageData: ByteArray? = null,
     val memories: List<MemoryModel> = listOf(),
     val isFirst: Boolean = true
 ) {

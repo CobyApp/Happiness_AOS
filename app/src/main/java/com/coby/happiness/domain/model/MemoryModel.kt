@@ -13,13 +13,12 @@ data class MemoryModel(
     val note: String = "",
     val location: LocationModel? = null,
     val photos: List<Bitmap> = listOf(),
-    val photosData: List<ByteArray> = listOf(),
     val bunches: List<BunchModel> = listOf(),
     val isFirst: Boolean = true
 ) {
 
     val isFirstPageDisabled: Boolean
-        get() = photosData.isEmpty()
+        get() = photos.isEmpty()
 
     val isSecondPageDisabled: Boolean
         get() = title.isEmpty() || note.isEmpty()

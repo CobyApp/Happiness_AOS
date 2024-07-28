@@ -1,6 +1,6 @@
 package com.coby.happiness.data.entity
 
-import android.provider.ContactsContract.Data
+import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.coby.happiness.domain.model.LocationModel
@@ -16,5 +16,5 @@ data class MemoryEntity(
     val title: String,
     val note: String,
     val location: LocationModel?,
-    val photosData: List<ByteArray>
+    val photos: List<Bitmap>
 )

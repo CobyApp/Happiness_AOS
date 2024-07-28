@@ -15,7 +15,7 @@ class BunchRepository @Inject constructor(
     private val bunchDao: BunchDao,
     private val memoryDao: MemoryDao
 ) {
-    suspend fun getAllBunches(): List<Unit> {
+    suspend fun getAllBunches(): List<BunchModel> {
         return withContext(Dispatchers.IO) {
             bunchDao.getAllBunches().map { bunchEntity ->
                 val memories = bunchEntity.memoryIds.mapNotNull { memoryDao.getMemoryById(it)?.toMemoryModel() }

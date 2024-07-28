@@ -13,6 +13,6 @@ data class BunchEntity(
     val startDate: LocalDateTime,
     val endDate: LocalDateTime,
     val title: String,
-    val imageData: Bitmap,
-    val memories: List<UUID>
+    val image: Bitmap?,
+    val memoryIds: List<UUID>
 )
