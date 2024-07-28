@@ -69,15 +69,15 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation("com.github.cobylibrary:cobylibrary:1.0.7")
-    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation(libs.cobylibrary)
+    implementation(libs.androidx.navigation.compose)
 
     // Hilt 의존성
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 
     // viewModelScope
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 }
 
 kapt {
