@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -69,4 +71,15 @@ dependencies {
 
     implementation("com.github.cobylibrary:cobylibrary:1.0.7")
     implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // Hilt 의존성
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+    // viewModelScope
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+}
+
+kapt {
+    correctErrorTypes = true
 }
