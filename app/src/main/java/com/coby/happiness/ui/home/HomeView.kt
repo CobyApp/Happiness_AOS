@@ -32,7 +32,7 @@ import com.coby.happiness.domain.model.formatLong
 @Composable
 fun HomeScreen(
     homeViewModel: HomeViewModel = hiltViewModel(),
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController
 ) {
     val state by homeViewModel.state.collectAsStateWithLifecycle()
 
@@ -70,18 +70,6 @@ fun HomeScreen(
                     navController.navigate("detailMemory/${memory.id}")
                 }
             )
-        }
-    }
-
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") { HomeScreen(navController = navController) }
-        // composable("addMemory") { EditMemoryView(navController = navController) }
-        composable("detailMemory/{memoryId}") { backStackEntry ->
-            val memoryId = backStackEntry.arguments?.getString("memoryId")
-            val memory = state.memories.find { it.id.toString() == memoryId }
-            if (memory != null) {
-                // DetailMemoryView(memory = memory, navController = navController)
-            }
         }
     }
 }

@@ -120,10 +120,30 @@ fun MainScreen() {
                 .background(Color.BackgroundNormalNormal())
                 .padding(innerPadding)
         ) {
-            composable(Screen.Home.route) { HomeScreen() }
+            composable(Screen.Home.route) { HomeNavigation() }
             composable(Screen.Map.route) { MapScreen() }
             composable(Screen.Bunch.route) { BunchScreen() }
             composable(Screen.Profile.route) { ProfileScreen() }
+        }
+    }
+}
+
+@Composable
+fun HomeNavigation() {
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "home") {
+        composable("home") { HomeScreen(navController = navController) }
+        // composable("addMemory") { EditMemoryView(navController = navController) }
+        composable("detailMemory/{memoryId}") { backStackEntry ->
+//            val memoryId = backStackEntry.arguments?.getString("memoryId")
+//            // 메모리 ID를 사용하여 상세 뷰를 표시
+//            val homeViewModel: HomeViewModel = hiltViewModel()
+//            val state by homeViewModel.state.collectAsStateWithLifecycle()
+//            val memory = state.memories.find { it.id.toString() == memoryId }
+//            if (memory != null) {
+//                DetailMemoryView(memory = memory, navController = navController)
+//            }
         }
     }
 }
