@@ -1,22 +1,21 @@
-package com.coby.happiness.ui.map
+package com.coby.happiness.ui.bunch
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.coby.cobylibrary.ui.element.basic.ContentType
 import com.coby.cobylibrary.ui.element.basic.TopBarView
 
 @Composable
-fun MapScreen() {
+fun Bunch() {
     Column {
         TopBarView(
             leftSide = ContentType.Title,
-            leftTitle = "지도",
+            leftTitle = "뭉치",
             rightSide = ContentType.Text,
-            rightTitle = "추억 기록하기",
+            rightTitle = "추억 뭉치기",
             rightAction = { }
         )
 

@@ -10,20 +10,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-sealed class HomeAction {
-    object ShowAddMemory : HomeAction()
-    data class ShowDetailMemory(val memory: MemoryModel) : HomeAction()
-    object GetMemories : HomeAction()
-    data class GetMemoriesResponse(val memories: List<MemoryModel>) : HomeAction()
-    data class GetMemoriesFailure(val error: Throwable) : HomeAction()
-}
-
-data class HomeState(
-//    val addMemory: EditMemoryState? = null,
-//    val detailMemory: DetailMemoryState? = null,
-    val memories: List<MemoryModel> = emptyList()
-)
-
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val memoryRepository: MemoryRepository
@@ -31,6 +17,10 @@ class HomeViewModel @Inject constructor(
 
     private val _state = MutableStateFlow(HomeState())
     val state: StateFlow<HomeState> = _state
+
+    init {
+        handleAction(HomeAction.GetMemories)
+    }
 
     fun handleAction(action: HomeAction) {
         when (action) {

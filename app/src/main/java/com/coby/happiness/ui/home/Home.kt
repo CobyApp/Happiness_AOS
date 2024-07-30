@@ -1,11 +1,9 @@
 package com.coby.happiness.ui.home
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,7 +20,6 @@ import com.coby.cobylibrary.ui.element.basic.BaseSize
 import com.coby.cobylibrary.ui.element.basic.ContentType
 import com.coby.cobylibrary.ui.element.basic.TopBarView
 import com.coby.cobylibrary.ui.element.thumbnail.ThumbnailCardView
-import com.coby.cobylibrary.ui.theme.BackgroundNormalNormal
 import com.coby.cobylibrary.ui.theme.LabelNormal
 import com.coby.cobylibrary.ui.theme.Typography
 import com.coby.happiness.R
@@ -30,7 +27,7 @@ import com.coby.happiness.domain.model.MemoryModel
 import com.coby.happiness.domain.model.formatLong
 
 @Composable
-fun HomeScreen(
+fun Home(
     homeViewModel: HomeViewModel = hiltViewModel(),
     navController: NavHostController
 ) {

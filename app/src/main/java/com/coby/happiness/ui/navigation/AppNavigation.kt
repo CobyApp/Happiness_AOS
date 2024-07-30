@@ -27,9 +27,9 @@ import com.coby.cobylibrary.ui.theme.LabelAlternative
 import com.coby.cobylibrary.ui.theme.RedNormal
 import com.coby.cobylibrary.ui.theme.Typography
 import com.coby.happiness.R
-import com.coby.happiness.ui.bunch.BunchScreen
-import com.coby.happiness.ui.map.MapScreen
-import com.coby.happiness.ui.profile.ProfileScreen
+import com.coby.happiness.ui.bunch.Bunch
+import com.coby.happiness.ui.map.Map
+import com.coby.happiness.ui.profile.Profile
 
 @Composable
 fun AppNavigation() {
@@ -93,9 +93,9 @@ fun AppNavigation() {
                 .padding(innerPadding)
         ) {
             composable(Screen.Home.route) { HomeNavigation() }
-            composable(Screen.Map.route) { MapScreen() }
-            composable(Screen.Bunch.route) { BunchScreen() }
-            composable(Screen.Profile.route) { ProfileScreen() }
+            composable(Screen.Map.route) { Map() }
+            composable(Screen.Bunch.route) { Bunch() }
+            composable(Screen.Profile.route) { Profile() }
         }
     }
 }

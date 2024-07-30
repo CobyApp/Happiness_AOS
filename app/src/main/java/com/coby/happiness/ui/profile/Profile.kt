@@ -1,22 +1,21 @@
-package com.coby.happiness.ui.bunch
+package com.coby.happiness.ui.profile
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.coby.cobylibrary.ui.element.basic.ContentType
 import com.coby.cobylibrary.ui.element.basic.TopBarView
 
 @Composable
-fun BunchScreen() {
+fun Profile() {
     Column {
         TopBarView(
             leftSide = ContentType.Title,
-            leftTitle = "뭉치",
+            leftTitle = "정보",
             rightSide = ContentType.Text,
-            rightTitle = "추억 뭉치기",
+            rightTitle = "설정",
             rightAction = { }
         )
 

@@ -4,14 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.coby.happiness.ui.home.HomeScreen
+import com.coby.happiness.ui.home.Home
 
 @Composable
 fun HomeNavigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "home") {
-        composable("home") { HomeScreen(navController = navController) }
+        composable("home") { Home(navController = navController) }
         // composable("addMemory") { EditMemoryView(navController = navController) }
         composable("detailMemory/{memoryId}") { backStackEntry ->
 //            val memoryId = backStackEntry.arguments?.getString("memoryId")
