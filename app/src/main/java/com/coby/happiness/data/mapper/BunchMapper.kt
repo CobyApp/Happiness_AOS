@@ -10,7 +10,7 @@ fun BunchEntity.toBunchModel(memories: List<MemoryModel>): BunchModel {
         startDate = this.startDate,
         endDate = this.endDate,
         title = this.title,
-        image = this.image,
+//        image = this.image,
         memories = memories.sortedBy { it.date },
         isFirst = false
     )
@@ -22,7 +22,7 @@ fun BunchModel.toBunchEntity(): BunchEntity {
         startDate = this.startDate,
         endDate = this.endDate,
         title = this.title,
-        image = this.image,
-        memoryIds = this.memories.map { it.id }
+        image = null,
+        memoryIds = this.memories.map { it.id }.toString()
     )
 }

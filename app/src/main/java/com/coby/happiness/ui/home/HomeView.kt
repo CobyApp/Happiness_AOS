@@ -119,6 +119,7 @@ fun EmptyMemoryView(onAddMemoryClick: () -> Unit) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            // Implement your empty view here
         }
     }
 }

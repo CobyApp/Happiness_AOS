@@ -2,7 +2,7 @@
 agp = "8.5.0"
 cobylibrary = "1.0.8"
 hiltAndroidCompiler = "2.51"
-kotlin = "1.9.20"
+kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -46,4 +46,5 @@ androidx-adapters = { group = "androidx.databinding", name = "adapters", version
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 

@@ -12,7 +12,7 @@ fun MemoryEntity.toMemoryModel(): MemoryModel {
         title = this.title,
         note = this.note,
         location = this.location,
-        photos = this.photos,
+//        photos = this.photos,
         isFirst = false
     )
 }
@@ -25,6 +25,6 @@ fun MemoryModel.toMemoryEntity(): MemoryEntity {
         title = this.title,
         note = this.note,
         location = this.location,
-        photos = this.photos
+        photos = this.photos.toString()
     )
 }

@@ -11,9 +11,6 @@ import kotlinx.coroutines.launch
 import java.util.UUID
 import javax.inject.Inject
 
-data class EditMemoryState(val id: UUID? = null)
-data class DetailMemoryState(val memory: MemoryModel)
-
 sealed class HomeAction {
     object ShowAddMemory : HomeAction()
     data class ShowDetailMemory(val memory: MemoryModel) : HomeAction()
@@ -48,11 +45,11 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun showAddMemory() {
-        _state.value = _state.value.copy(addMemory = EditMemoryState())
+//        _state.value = _state.value.copy(addMemory = EditMemoryState())
     }
 
     private fun showDetailMemory(memory: MemoryModel) {
-        _state.value = _state.value.copy(detailMemory = DetailMemoryState(memory))
+//        _state.value = _state.value.copy(detailMemory = DetailMemoryState(memory))
     }
 
     private fun getMemories() {
@@ -68,7 +65,7 @@ class HomeViewModel @Inject constructor(
 }
 
 data class HomeState(
-    val addMemory: EditMemoryState? = null,
-    val detailMemory: DetailMemoryState? = null,
+//    val addMemory: EditMemoryState? = null,
+//    val detailMemory: DetailMemoryState? = null,
     val memories: List<MemoryModel> = emptyList()
 )

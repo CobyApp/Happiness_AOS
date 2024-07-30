@@ -1,6 +1,6 @@
 package com.coby.happiness.data.entity
 
-import android.graphics.Bitmap
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.coby.happiness.domain.model.LocationModel
@@ -11,10 +11,12 @@ import java.util.UUID
 @Entity(tableName = "memories")
 data class MemoryEntity(
     @PrimaryKey val id: UUID,
-    val date: LocalDateTime,
+    @Embedded val date: LocalDateTime,
     val type: MemoryType,
     val title: String,
     val note: String,
-    val location: LocationModel?,
-    val photos: List<Bitmap>
-)
+    @Embedded val location: LocationModel?,
+    val photos: String // 변환기로 처리
+) {
+    constructor() : this(UUID.randomUUID(), LocalDateTime.now(), MemoryType.TRIP, "", "", null, "")
+}

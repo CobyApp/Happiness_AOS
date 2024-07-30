@@ -1,13 +1,13 @@
 package com.coby.happiness.di
 
 import android.content.Context
-import androidx.room.Room
 import com.coby.happiness.data.dao.BunchDao
 import com.coby.happiness.data.dao.MemoryDao
 import com.coby.happiness.data.service.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -17,10 +17,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(app: Context): AppDatabase {
-        return Room.databaseBuilder(app, AppDatabase::class.java, "app_database")
-            .fallbackToDestructiveMigration()
-            .build()
+    fun provideDatabase(@ApplicationContext appContext: Context): AppDatabase {
+        return AppDatabase.getDatabase(appContext)
     }
 
     @Provides

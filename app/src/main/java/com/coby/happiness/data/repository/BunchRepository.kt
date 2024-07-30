@@ -6,6 +6,7 @@ import com.coby.happiness.data.mapper.toBunchEntity
 import com.coby.happiness.data.mapper.toBunchModel
 import com.coby.happiness.data.mapper.toMemoryModel
 import com.coby.happiness.domain.model.BunchModel
+import com.coby.happiness.domain.model.MemoryModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -18,7 +19,8 @@ class BunchRepository @Inject constructor(
     suspend fun getAllBunches(): List<BunchModel> {
         return withContext(Dispatchers.IO) {
             bunchDao.getAllBunches().map { bunchEntity ->
-                val memories = bunchEntity.memoryIds.mapNotNull { memoryDao.getMemoryById(it)?.toMemoryModel() }
+//                val memories = bunchEntity.memoryIds.mapNotNull { memoryDao.getMemoryById(it)?.toMemoryModel() }
+                val memories = emptyList<MemoryModel>()
                 bunchEntity.toBunchModel(memories)
             }
         }
@@ -27,7 +29,8 @@ class BunchRepository @Inject constructor(
     suspend fun getBunchById(id: UUID): BunchModel? {
         return withContext(Dispatchers.IO) {
             val bunchEntity = bunchDao.getBunchById(id) ?: return@withContext null
-            val memories = bunchEntity.memoryIds.mapNotNull { memoryDao.getMemoryById(it)?.toMemoryModel() }
+//            val memories = bunchEntity.memoryIds.mapNotNull { memoryDao.getMemoryById(it)?.toMemoryModel() }
+            val memories = emptyList<MemoryModel>()
             bunchEntity.toBunchModel(memories)
         }
     }
