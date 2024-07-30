@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +23,8 @@ import com.coby.cobylibrary.ui.element.basic.ContentType
 import com.coby.cobylibrary.ui.element.basic.TopBarView
 import com.coby.cobylibrary.ui.element.thumbnail.ThumbnailCardView
 import com.coby.cobylibrary.ui.theme.BackgroundNormalNormal
+import com.coby.cobylibrary.ui.theme.LabelNormal
+import com.coby.cobylibrary.ui.theme.Typography
 import com.coby.happiness.R
 import com.coby.happiness.domain.model.MemoryModel
 import com.coby.happiness.domain.model.formatLong
@@ -37,37 +40,34 @@ fun HomeScreen(
         homeViewModel.handleAction(HomeAction.GetMemories)
     }
 
-    Surface(color = Color.BackgroundNormalNormal()) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Gray)
-        ) {
-            Box {
-                TopBarView(
-                    rightSide = ContentType.Text,
-                    rightTitle = "추억 기록하기",
-                    rightAction = { /* TODO: Navigate to Add Memory screen */ }
-                )
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        Box {
+            TopBarView(
+                rightSide = ContentType.Text,
+                rightTitle = "추억 기록하기",
+                rightAction = { /* TODO: Navigate to Add Memory screen */ }
+            )
 
-                Icon(
-                    modifier = Modifier
-                        .align(Alignment.TopStart)
-                        .padding(start = BaseSize.horizontalPadding, top = 12.dp)
-                        .size(width = 52.dp, height = 40.dp),
-                    painter = painterResource(id = R.drawable.ic_logo),
-                    contentDescription = "logo"
-                )
-            }
-
-            MemoryListView(
-                memories = state.memories,
-                onMemoryClick = { memory ->
-                    homeViewModel.handleAction(HomeAction.ShowDetailMemory(memory))
-                    navController.navigate("detailMemory/${memory.id}")
-                }
+            Icon(
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(start = BaseSize.horizontalPadding, top = 12.dp)
+                    .size(width = 52.dp, height = 40.dp),
+                painter = painterResource(id = R.drawable.ic_logo),
+                contentDescription = "logo"
             )
         }
+
+        MemoryListView(
+            memories = state.memories,
+            onMemoryClick = { memory ->
+                homeViewModel.handleAction(HomeAction.ShowDetailMemory(memory))
+                navController.navigate("detailMemory/${memory.id}")
+            }
+        )
     }
 }
 
@@ -105,7 +105,11 @@ fun EmptyMemoryView(onAddMemoryClick: () -> Unit) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Implement your empty view here
+            Text(
+                text = "데이터가 없습니다.",
+                style = Typography.titleMedium,
+                color = Color.LabelNormal()
+            )
         }
     }
 }

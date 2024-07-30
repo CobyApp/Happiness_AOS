@@ -32,10 +32,6 @@ class HomeViewModel @Inject constructor(
     private val _state = MutableStateFlow(HomeState())
     val state: StateFlow<HomeState> = _state
 
-    init {
-        getMemories()
-    }
-
     fun handleAction(action: HomeAction) {
         when (action) {
             is HomeAction.ShowAddMemory -> showAddMemory()
