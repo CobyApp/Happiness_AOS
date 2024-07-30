@@ -73,9 +73,11 @@ dependencies {
 
     implementation(libs.cobylibrary)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     // Hilt 의존성
     implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.android.compiler)
 
     // viewModelScope

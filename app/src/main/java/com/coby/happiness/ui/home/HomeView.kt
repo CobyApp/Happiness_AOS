@@ -14,7 +14,8 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -30,10 +31,10 @@ import com.coby.happiness.domain.model.formatLong
 
 @Composable
 fun HomeScreen(
-    homeViewModel: HomeViewModel = viewModel(),
+    homeViewModel: HomeViewModel = hiltViewModel(),
     navController: NavHostController = rememberNavController()
 ) {
-    val state by homeViewModel.state.collectAsState()
+    val state by homeViewModel.state.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         homeViewModel.handleAction(HomeAction.GetMemories)
@@ -49,7 +50,7 @@ fun HomeScreen(
                 TopBarView(
                     rightSide = ContentType.Text,
                     rightTitle = "추억 기록하기",
-                    rightAction = { }
+                    rightAction = { /* TODO: Navigate to Add Memory screen */ }
                 )
 
                 Icon(
@@ -66,6 +67,7 @@ fun HomeScreen(
                 memories = state.memories,
                 onMemoryClick = { memory ->
                     homeViewModel.handleAction(HomeAction.ShowDetailMemory(memory))
+                    navController.navigate("detailMemory/${memory.id}")
                 }
             )
         }
@@ -73,13 +75,12 @@ fun HomeScreen(
 
     NavHost(navController = navController, startDestination = "home") {
         composable("home") { HomeScreen(navController = navController) }
-//        composable("addMemory") { EditMemoryView(navController = navController) }
+        // composable("addMemory") { EditMemoryView(navController = navController) }
         composable("detailMemory/{memoryId}") { backStackEntry ->
             val memoryId = backStackEntry.arguments?.getString("memoryId")
-            // 메모리 ID를 사용하여 상세 뷰를 표시
             val memory = state.memories.find { it.id.toString() == memoryId }
             if (memory != null) {
-//                DetailMemoryView(memory = memory, navController = navController)
+                // DetailMemoryView(memory = memory, navController = navController)
             }
         }
     }
