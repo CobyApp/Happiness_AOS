@@ -1,5 +1,6 @@
 package com.coby.happiness.data.entity
 
+import android.graphics.Bitmap
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -16,7 +17,7 @@ data class MemoryEntity(
     val title: String,
     val note: String,
     @Embedded val location: LocationModel?,
-    val photos: String // 변환기로 처리
+    val photos: List<Bitmap>,
 ) {
-    constructor() : this(UUID.randomUUID(), LocalDateTime.now(), MemoryType.TRIP, "", "", null, "")
+    constructor() : this(UUID.randomUUID(), LocalDateTime.now(), MemoryType.TRIP, "", "", null, emptyList())
 }

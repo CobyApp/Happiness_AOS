@@ -1,5 +1,6 @@
 package com.coby.happiness.data.entity
 
+import android.graphics.Bitmap
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -12,7 +13,7 @@ data class BunchEntity(
     @Embedded val startDate: LocalDateTime,
     @Embedded val endDate: LocalDateTime,
     val title: String,
-    val image: String?, // 변환기로 처리
+    val image: Bitmap?,
     val memoryIds: String // 변환기로 처리
 ) {
     constructor() : this(UUID.randomUUID(), LocalDateTime.now(), LocalDateTime.now(), "", null, "")
