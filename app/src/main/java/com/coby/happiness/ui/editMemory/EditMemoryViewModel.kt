@@ -19,7 +19,7 @@ class EditMemoryViewModel @Inject constructor(
     private val _state = MutableStateFlow(EditMemoryState())
     val state: StateFlow<EditMemoryState> = _state
 
-    fun dispatch(action: EditMemoryAction) {
+    fun handleAction(action: EditMemoryAction) {
         when (action) {
             is EditMemoryAction.Binding -> _state.update { action.state }
             is EditMemoryAction.CloseAlert -> handleCloseAlert(action.action)
@@ -33,7 +33,7 @@ class EditMemoryViewModel @Inject constructor(
 
     private fun handleCloseAlert(action: CloseAlertAction) {
         when (action) {
-            CloseAlertAction.CLOSE -> dispatch(EditMemoryAction.Dismiss)
+            CloseAlertAction.CLOSE -> handleAction(EditMemoryAction.Dismiss)
         }
     }
 
@@ -79,7 +79,7 @@ class EditMemoryViewModel @Inject constructor(
                 } else {
                     memoryRepository.updateMemory(memory)
                 }
-                dispatch(EditMemoryAction.SaveMemoryResponse)
+                handleAction(EditMemoryAction.SaveMemoryResponse)
             } catch (e: Exception) {
                 // Handle error
             }

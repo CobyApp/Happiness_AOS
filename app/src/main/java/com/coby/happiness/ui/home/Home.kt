@@ -28,13 +28,13 @@ import com.coby.happiness.domain.model.formatLong
 
 @Composable
 fun Home(
-    homeViewModel: HomeViewModel = hiltViewModel(),
+    viewModel: HomeViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
-    val state by homeViewModel.state.collectAsStateWithLifecycle()
+    val state by viewModel.state.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
-        homeViewModel.handleAction(HomeAction.GetMemories)
+        viewModel.handleAction(HomeAction.GetMemories)
     }
 
     Column(
@@ -45,7 +45,10 @@ fun Home(
             TopBarView(
                 rightSide = ContentType.Text,
                 rightTitle = "추억 기록하기",
-                rightAction = { /* TODO: Navigate to Add Memory screen */ }
+                rightAction = {
+                    viewModel.handleAction(HomeAction.ShowAddMemory)
+                    navController.navigate("addMemory")
+                }
             )
 
             Icon(
@@ -61,7 +64,7 @@ fun Home(
         MemoryListView(
             memories = state.memories,
             onMemoryClick = { memory ->
-                homeViewModel.handleAction(HomeAction.ShowDetailMemory(memory))
+                viewModel.handleAction(HomeAction.ShowDetailMemory(memory))
                 navController.navigate("detailMemory/${memory.id}")
             }
         )
