@@ -1,6 +1,5 @@
 package com.coby.happiness.ui.home
 
-import androidx.annotation.ContentView
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -28,11 +27,11 @@ import com.coby.happiness.domain.model.MemoryModel
 import com.coby.happiness.domain.model.formatLong
 
 @Composable
-fun Home(
+fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
-    val state by viewModel.state.collectAsStateWithLifecycle()
+    val state by viewModel.state.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.handleAction(HomeAction.GetMemories)
