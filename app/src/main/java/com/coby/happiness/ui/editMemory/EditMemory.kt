@@ -23,12 +23,10 @@ fun EditMemory(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        Box {
-            TopBarView(
-                leftAction = { }
-            )
-            
-            Text(text = "추억 추가")
-        }
+        TopBarView(
+            leftAction = { }
+        )
+
+        Text(text = "추억 추가")
     }
 }

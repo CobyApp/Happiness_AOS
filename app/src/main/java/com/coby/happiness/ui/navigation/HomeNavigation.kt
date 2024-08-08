@@ -13,7 +13,7 @@ fun HomeNavigation() {
 
     NavHost(navController = navController, startDestination = "home") {
         composable("home") { Home(navController = navController) }
-         composable("addMemory") { EditMemory(navController = navController) }
+        composable("addMemory") { EditMemory(navController = navController) }
         composable("detailMemory/{memoryId}") { backStackEntry ->
 //            val memoryId = backStackEntry.arguments?.getString("memoryId")
 //            // 메모리 ID를 사용하여 상세 뷰를 표시

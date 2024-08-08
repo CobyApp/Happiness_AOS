@@ -1,5 +1,6 @@
 package com.coby.happiness.ui.home
 
+import androidx.annotation.ContentView
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -43,6 +44,7 @@ fun Home(
     ) {
         Box {
             TopBarView(
+                leftSide = ContentType.None,
                 rightSide = ContentType.Text,
                 rightTitle = "추억 기록하기",
                 rightAction = {
