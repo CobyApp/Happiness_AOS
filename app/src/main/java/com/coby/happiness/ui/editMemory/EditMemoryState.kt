@@ -12,6 +12,6 @@ import kotlinx.coroutines.flow.update
 
 data class EditMemoryState(
     val closeAlert: AlertState<CloseAlertAction>? = null,
-    val selection: PageType = PageType.FIRST,
+    var selection: PageType = PageType.FIRST,
     val memory: MemoryModel = MemoryModel()
 )

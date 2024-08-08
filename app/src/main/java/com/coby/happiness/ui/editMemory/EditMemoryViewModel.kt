@@ -9,8 +9,10 @@ import com.coby.happiness.ui.common.AlertButton
 import com.coby.happiness.ui.common.AlertState
 import com.coby.happiness.ui.common.CloseAlertAction
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,6 +24,9 @@ class EditMemoryViewModel @Inject constructor(
 
     private val _state = MutableStateFlow(EditMemoryState())
     val state: StateFlow<EditMemoryState> = _state
+
+    private val _uiEvent = MutableSharedFlow<EditMemoryUiEvent>()
+    val uiEvent = _uiEvent.asSharedFlow()
 
     fun handleAction(action: EditMemoryAction) {
         when (action) {
@@ -62,7 +67,7 @@ class EditMemoryViewModel @Inject constructor(
     }
 
     private fun completeButtonTapped() {
-        _state.value = _state.value.let { state ->
+        _state.update { state ->
             when (state.selection) {
                 PageType.FIRST -> state.copy(selection = PageType.SECOND)
                 PageType.SECOND -> {
@@ -92,6 +97,8 @@ class EditMemoryViewModel @Inject constructor(
     }
 
     private fun dismiss() {
-        // Handle dismiss logic
+        viewModelScope.launch {
+            _uiEvent.emit(EditMemoryUiEvent.Dismiss)
+        }
     }
 }

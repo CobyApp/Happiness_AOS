@@ -12,3 +12,8 @@ sealed class EditMemoryAction {
     data object SaveMemoryResponse : EditMemoryAction()
     data object Dismiss : EditMemoryAction()
 }
+
+sealed class EditMemoryUiEvent {
+//    data object ShowCloseAlert : EditMemoryUiEvent()
+    data object Dismiss : EditMemoryUiEvent()
+}

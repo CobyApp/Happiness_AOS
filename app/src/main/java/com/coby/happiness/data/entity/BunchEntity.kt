@@ -14,7 +14,7 @@ data class BunchEntity(
     @Embedded val endDate: LocalDateTime,
     val title: String,
     val image: Bitmap?,
-    val memoryIds: String // 변환기로 처리
+    val memoryIds: String
 ) {
     constructor() : this(UUID.randomUUID(), LocalDateTime.now(), LocalDateTime.now(), "", null, "")
 }

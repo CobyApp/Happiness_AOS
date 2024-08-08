@@ -31,15 +31,14 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         viewModel.handleAction(HomeAction.GetMemories)
     }
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
         Box {
             TopBarView(
@@ -48,7 +47,7 @@ fun HomeScreen(
                 rightTitle = "추억 기록하기",
                 rightAction = {
                     viewModel.handleAction(HomeAction.ShowAddMemory)
-                    navController.navigate("addMemory")
+                    navController.navigate("editMemory")
                 }
             )
 

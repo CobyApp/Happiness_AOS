@@ -19,18 +19,6 @@ class RoomConverters {
     fun toUUID(uuid: String): UUID = UUID.fromString(uuid)
 
     @TypeConverter
-    fun fromMemoryIds(ids: List<UUID>): String = ids.joinToString(",")
-
-    @TypeConverter
-    fun toMemoryIds(data: String): List<UUID> = data.split(",").map { UUID.fromString(it) }
-
-    @TypeConverter
-    fun fromStringList(list: List<String>): String = list.joinToString(",")
-
-    @TypeConverter
-    fun toStringList(data: String): List<String> = data.split(",")
-
-    @TypeConverter
     fun fromBitmap(bitmap: Bitmap): String {
         val outputStream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
@@ -52,24 +40,6 @@ class RoomConverters {
     fun toBitmapList(data: String): List<Bitmap> {
         return data.split(",").map { toBitmap(it) }
     }
-
-    @TypeConverter
-    fun fromLocationModel(location: LocationModel?): String {
-        return if (location == null) "" else "${location.lat},${location.lon}"
-    }
-
-    @TypeConverter
-    fun toLocationModel(data: String): LocationModel? {
-        if (data.isEmpty()) return null
-        val parts = data.split(",")
-        return LocationModel(parts[0].toDouble(), parts[1].toDouble())
-    }
-
-    @TypeConverter
-    fun fromLocalDateTime(date: LocalDateTime): String = date.toString()
-
-    @TypeConverter
-    fun toLocalDateTime(date: String): LocalDateTime = LocalDateTime.parse(date)
 
     @TypeConverter
     fun fromMemoryType(type: MemoryType): String = type.name
